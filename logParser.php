@@ -56,8 +56,6 @@ function getStatusCodesCount(array $statusCodes)
 // Get log from terminal.
 $log = file($argv[1]);
 
-$wtf = [];
-
 $urls = [];
 $traffic = [];
 $crawlerBots = [];
