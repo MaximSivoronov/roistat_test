@@ -2,9 +2,15 @@
 
 function getUrl(string $logLine)
 {
-    preg_match('/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/', $logLine, $matches);
-    return $matches[0];
+    preg_match('/\s\/.*(?=\sHTTP)/', $logLine, $matches);
+    return trim($matches[0]);
 }
+
+//function getUrl(string $logLine)
+//{
+//    preg_match('/(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:\/~+#-]*[\w@?^=%&\/~+#-])/', $logLine, $matches);
+//    return $matches[0];
+//}
 
 function getRequestMethod(string $logLine)
 {
@@ -49,6 +55,8 @@ function getStatusCodesCount(array $statusCodes)
 
 // Get log from terminal.
 $log = file($argv[1]);
+
+$wtf = [];
 
 $urls = [];
 $traffic = [];
